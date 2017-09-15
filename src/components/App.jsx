@@ -7,9 +7,9 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    this.props.searchYouTube({max: 5, query: 'react tutorial', key: window.YOUTUBE_API_KEY}, (function(data) {
-      this.setState({videoList: data, currentVid: data[0]});
-    }).bind(this));
+    this.props.searchYouTube({max: 5, query: 'react tutorial', key: window.YOUTUBE_API_KEY},
+      data => this.setState({videoList: data, currentVid: data[0]})
+    );
   }
 
   onVideoListEntryClick (clickedVideo) {
@@ -17,9 +17,9 @@ class App extends React.Component {
   }
 
   onSearchEntryChange (input) {
-    this.props.searchYouTube({max: 5, query: input, key: window.YOUTUBE_API_KEY}, (function(data) {
-      this.setState({videoList: data, currentVid: data[0]});
-    }).bind(this));
+    this.props.searchYouTube({max: 5, query: input, key: window.YOUTUBE_API_KEY},
+      data => this.setState({videoList: data, currentVid: data[0]})
+    );
   }
 
   render () {
